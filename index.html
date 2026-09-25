@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniCube — A little light in a new place | Student Support, Storage & Moving</title>
+  <meta name="description" content="UniCube is here to make student life a little less chaotic and a lot more beautiful. Student storage, moving, AI helper, city guides, and community in Brisbane.">
+
+  <!-- Google Fonts: Plus Jakarta Sans (Modern UI) + Caveat (Handwritten editorial notes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fe4203'><rect width='24' height='24' rx='6'/><path d='M7 7h10v10H7z' fill='none' stroke='white' stroke-width='2'/></svg>">
+</head>
+<body>
+
+  <!-- ========================================================
+       1. STICKY TOP NAVIGATION
+       ======================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <!-- UniCube Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="UniCube Home">
+        <span class="logo-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="#FE4203"/>
+            <rect x="7" y="7" width="14" height="14" rx="3.5" stroke="white" stroke-width="2.2"/>
+            <path d="M10 14H18M14 10V18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">UniCube</span>
+      </a>
+
+      <!-- Desktop Navigation Menu Links -->
+      <nav class="nav-links" id="nav-menu" aria-label="Main Navigation">
+        <a href="#safe-spot" class="nav-link">How we help</a>
+        <a href="#guides" class="nav-link">Guides</a>
+        <a href="#ai-helper" class="nav-link nav-link--ai">
+          <span class="ai-sparkle-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z"/>
+            </svg>
+          </span>
+          AI Helper
+        </a>
+        <a href="#community" class="nav-link">Community</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+
+      <!-- Nav CTA & Mobile Menu Toggle -->
+      <div class="nav-actions">
+        <button class="btn btn-primary nav-cta-btn" id="nav-get-started-btn" onclick="openModal('booking-modal')">
+          <span>Get started</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <span class="logo-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="#FE4203"/>
+            <rect x="7" y="7" width="14" height="14" rx="3.5" stroke="white" stroke-width="2.2"/>
+          </svg>
+        </span>
+        <span class="logo-text">UniCube</span>
+      </div>
+      <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#safe-spot" class="drawer-link">How we help</a>
+      <a href="#guides" class="drawer-link">Guides</a>
+      <a href="#ai-helper" class="drawer-link">AI Helper</a>
+      <a href="#community" class="drawer-link">Community</a>
+      <a href="#about" class="drawer-link">About</a>
+      <div class="drawer-cta">
+        <button class="btn btn-primary btn-block" onclick="openModal('booking-modal'); closeMobileDrawer();">Get started &rarr;</button>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <main>
+    <!-- ========================================================
+         2. HERO SECTION
+         ======================================================== -->
+    <section class="hero-section" id="hero" aria-label="Hero Overview">
+      <!-- Hero Background Image & Gradient Overlays -->
+      <div class="hero-bg-container">
+        <img src="assets/images/hero_student.jpg" alt="Student overlooking Brisbane sunset skyline" class="hero-bg-image" id="hero-img">
+        <div class="hero-overlay-gradient"></div>
+        <div class="hero-vignette"></div>
+
+        <!-- Glowing Interactive City Hotspot Route (Overlaid on City Skyline) -->
+        <svg class="city-route-svg" viewBox="0 0 1440 600" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path class="route-glow-path" d="M280 430 C 450 380, 560 370, 720 380 C 850 390, 960 440, 1100 420 C 1220 400, 1310 430, 1390 410" stroke="#FE4203" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 8" opacity="0.8"/>
+          <path class="route-core-path" d="M280 430 C 450 380, 560 370, 720 380 C 850 390, 960 440, 1100 420 C 1220 400, 1310 430, 1390 410" stroke="#FF8A50" stroke-width="2" stroke-linecap="round" stroke-dasharray="8 8"/>
+        </svg>
+
+        <!-- Interactive Hotspot Badges along the Brisbane City Skyline -->
+        <!-- Hotspot 1: off UQ -->
+        <div class="skyline-hotspot hotspot--uq" style="top: 31%; left: 42%;">
+          <div class="hotspot-badge-group">
+            <span class="handwritten-tag uq-tag">
+              off UQ
+              <svg class="handwritten-arrow-mini" width="22" height="20" viewBox="0 0 30 25" fill="none">
+                <path d="M5 20 C 12 12, 18 8, 26 5 M 26 5 L 18 4 M 26 5 L 23 12" stroke="#FFD8B8" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Hotspot 2: Find a place to live -->
+        <div class="skyline-hotspot hotspot--housing" style="top: 41%; left: 54%;" onclick="quickFilterAction('housing')">
+          <div class="hotspot-pill">
+            <div class="hotspot-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <span class="hotspot-label">Find a place<br>to live</span>
+          </div>
+        </div>
+
+        <!-- Hotspot 3: Meet people (left) -->
+        <div class="skyline-hotspot hotspot--meet-1" style="top: 52%; left: 68%;" onclick="quickFilterAction('community')">
+          <div class="hotspot-pill">
+            <div class="hotspot-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <span class="hotspot-label">Meet<br>people</span>
+          </div>
+        </div>
+
+        <!-- Hotspot 4: Explore Brisbane -->
+        <div class="skyline-hotspot hotspot--explore" style="top: 64%; left: 49%;" onclick="quickFilterAction('guides')">
+          <div class="hotspot-pill">
+            <div class="hotspot-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              </svg>
+            </div>
+            <span class="hotspot-label">Explore<br>Brisbane</span>
+          </div>
+        </div>
+
+        <!-- Hotspot 5: Meet people (right) -->
+        <div class="skyline-hotspot hotspot--meet-2" style="top: 52%; left: 84%;" onclick="quickFilterAction('community')">
+          <div class="hotspot-pill">
+            <div class="hotspot-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+              </svg>
+            </div>
+            <span class="hotspot-label">Meet<br>people</span>
+          </div>
+        </div>
+
+        <!-- Hotspot 6: Get around easily -->
+        <div class="skyline-hotspot hotspot--transit" style="top: 68%; left: 73%;" onclick="quickFilterAction('transit')">
+          <div class="hotspot-pill">
+            <div class="hotspot-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <rect x="3" y="4" width="18" height="14" rx="2"/>
+                <path d="M7 15h.01M17 15h.01M5 18l-2 3M19 18l2 3"/>
+              </svg>
+            </div>
+            <span class="hotspot-label">Get around<br>easily.</span>
+          </div>
+        </div>
+
+        <!-- Hotspot 7: Go home when you're ready -->
+        <div class="skyline-hotspot hotspot--gohome" style="top: 67%; left: 90%;" onclick="quickFilterAction('storage')">
+          <div class="hotspot-pill">
+            <div class="hotspot-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/>
+              </svg>
+            </div>
+            <span class="hotspot-label">Go home<br>when you're ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Main Foreground Content -->
+      <div class="hero-content-container">
+        <div class="hero-top-row">
+          <!-- Left: Hero Headline & Subtext -->
+          <div class="hero-headline-block">
+            <h1 class="hero-title">
+              <span class="title-white">A little light</span>
+              <span class="title-orange">in a new place.</span>
+            </h1>
+            <p class="hero-subtitle">
+              We're here to make student life<br>
+              a little less chaotic and a lot more beautiful.
+            </p>
+          </div>
+
+          <!-- Right: Floating Glassmorphism Hero Search Bar -->
+          <div class="hero-search-wrapper">
+            <div class="handwritten-note hero-search-note">
+              <span>Need a hand?<br>Ask UniCube.</span>
+              <svg class="handwritten-arrow-down" width="45" height="40" viewBox="0 0 50 45" fill="none">
+                <path d="M40 5 C 38 18, 22 25, 12 36 M 12 36 L 21 34 M 12 36 L 14 26" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <div class="hero-search-bar" id="hero-search-bar" onclick="focusHeroSearch()">
+              <span class="search-cube-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <rect width="24" height="24" rx="6" fill="#FE4203"/>
+                  <rect x="6" y="6" width="12" height="12" rx="3" stroke="white" stroke-width="2"/>
+                </svg>
+              </span>
+              <input type="text" id="hero-search-input" placeholder="Ask UniCube anything..." aria-label="Ask UniCube search">
+              <div class="search-audio-wave" title="Voice assistance demo">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+                <span class="bar bar-4"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Handwritten annotation beside student -->
+        <div class="handwritten-note hero-student-note">
+          <span>You're<br>not alone<br>here.</span>
+          <svg class="handwritten-arrow-student" width="38" height="30" viewBox="0 0 40 35" fill="none">
+            <path d="M35 15 C 25 22, 15 24, 6 22 M 6 22 L 14 17 M 6 22 L 12 28" stroke="#FFE7D0" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Bottom Hero Dock: 6 Services + Video Story Badge -->
+        <div class="hero-bottom-dock-container">
+          <div class="hero-services-dock" role="navigation" aria-label="UniCube Core Services">
+            <!-- 1. Storage -->
+            <a href="#storage" class="dock-item">
+              <div class="dock-icon dock-icon--orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <path d="m3.3 7 8.7 5 8.7-5M12 22V12"/>
+                </svg>
+              </div>
+              <div class="dock-meta">
+                <span class="dock-title">Storage</span>
+                <span class="dock-desc">Keep what you don't need right now</span>
+              </div>
+            </a>
+
+            <!-- 2. Moving -->
+            <a href="#moving" class="dock-item">
+              <div class="dock-icon dock-icon--orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="3" width="15" height="13"/>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              </div>
+              <div class="dock-meta">
+                <span class="dock-title">Moving</span>
+                <span class="dock-desc">Get between places easily</span>
+              </div>
+            </a>
+
+            <!-- 3. AI Helper -->
+            <a href="#ai-helper" class="dock-item">
+              <div class="dock-icon dock-icon--purple">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                  <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="dock-meta">
+                <span class="dock-title">AI Helper</span>
+                <span class="dock-desc">Ask anything</span>
+              </div>
+            </a>
+
+            <!-- 4. Guides -->
+            <a href="#guides" class="dock-item">
+              <div class="dock-icon dock-icon--orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </div>
+              <div class="dock-meta">
+                <span class="dock-title">Guides</span>
+                <span class="dock-desc">Practical advice for student life</span>
+              </div>
+            </a>
+
+            <!-- 5. Opportunities -->
+            <a href="#guides" class="dock-item">
+              <div class="dock-icon dock-icon--orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <div class="dock-meta">
+                <span class="dock-title">Opportunities</span>
+                <span class="dock-desc">Find part-time jobs</span>
+              </div>
+            </a>
+
+            <!-- 6. Community -->
+            <a href="#community" class="dock-item">
+              <div class="dock-icon dock-icon--orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="dock-meta">
+                <span class="dock-title">Community</span>
+                <span class="dock-desc">Meet people and experiences</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Video Story Badge (Right side of dock) -->
+          <div class="hero-video-card" onclick="openModal('video-modal')">
+            <button class="play-btn-circle" aria-label="Watch UniCube Student Story Video">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </button>
+            <div class="video-card-meta">
+              <span class="video-card-title">More than storage.</span>
+              <span class="video-card-desc">A support system for your student journey.</span>
+              <span class="video-card-link">Watch the story &rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         3. "THERE'S A LOT TO FIGURE OUT." SECTION (Scrapbook / Collage)
+         ======================================================== -->
+    <section class="collage-section" id="figure-out" aria-label="Student Journey Overview">
+      <div class="paper-texture-overlay"></div>
+      <div class="section-container collage-inner-container">
+        <!-- Left: Editorial intro & Handwritten Header -->
+        <div class="collage-intro-col">
+          <div class="handwritten-tag collage-pretag">
+            <span>NEW CITY.<br>NEW PEOPLE.<br>NEW <span class="tag-orange">CHAPTER.</span></span>
+            <svg class="handwritten-curved-arrow" width="55" height="35" viewBox="0 0 60 40" fill="none">
+              <path d="M5 25 C 20 8, 40 10, 52 28 M 52 28 L 42 27 M 52 28 L 49 19" stroke="#FE4203" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <h2 class="section-title collage-title">
+            There's a lot<br>
+            <span class="title-orange">to figure out.</span>
+          </h2>
+
+          <p class="section-body collage-body">
+            Moving to a new place is exciting, but it can also be a lot. New routines, new responsibilities, new everything.
+          </p>
+
+          <div class="handwritten-note collage-bottom-note">
+            <svg class="curved-down-arrow" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M10 5 C 25 15, 28 25, 20 35 M 20 35 L 28 30 M 20 35 L 24 24" stroke="#FE4203" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: Polaroid Scrapbook Layout -->
+        <div class="collage-polaroid-grid">
+          <!-- Polaroid 1: Where can I live? -->
+          <div class="polaroid-card polaroid--live" onclick="showPolaroidDetail('housing')">
+            <div class="washi-tape tape-top"></div>
+            <div class="polaroid-pin-label">Where can I live?</div>
+            <div class="polaroid-photo-frame">
+              <img src="assets/images/polaroid_housing.jpg" alt="Student living space" class="polaroid-img">
+            </div>
+          </div>
+
+          <!-- Polaroid 2: How do I meet people? -->
+          <div class="polaroid-card polaroid--meet" onclick="showPolaroidDetail('friends')">
+            <div class="washi-tape tape-angle"></div>
+            <div class="polaroid-pin-label">How do I meet people?</div>
+            <div class="polaroid-photo-frame">
+              <img src="assets/images/polaroid_friends.jpg" alt="Students meeting outdoors" class="polaroid-img">
+            </div>
+            <div class="polaroid-doodle doodle-sparkle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8L12 2Z" stroke="#FE4203" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Polaroid 3: How do I get around? -->
+          <div class="polaroid-card polaroid--transit" onclick="showPolaroidDetail('transit')">
+            <div class="polaroid-photo-frame">
+              <img src="assets/images/polaroid_transit.jpg" alt="Students taking transit" class="polaroid-img">
+            </div>
+            <div class="polaroid-bottom-label">How do I get around?</div>
+            <div class="washi-tape tape-bottom"></div>
+          </div>
+
+          <!-- Polaroid 4: First at UQ? -->
+          <div class="polaroid-card polaroid--uq" onclick="showPolaroidDetail('uq')">
+            <div class="washi-tape tape-top-right"></div>
+            <div class="polaroid-photo-frame">
+              <img src="assets/images/polaroid_uq.jpg" alt="University campus sandstone arches" class="polaroid-img">
+            </div>
+            <div class="polaroid-bottom-label">First at UQ?</div>
+          </div>
+
+          <!-- Polaroid 5: Where can I find work? -->
+          <div class="polaroid-card polaroid--work" onclick="showPolaroidDetail('work')">
+            <div class="washi-tape tape-top"></div>
+            <div class="polaroid-photo-frame">
+              <img src="assets/images/polaroid_work.jpg" alt="City skyline work view" class="polaroid-img">
+            </div>
+            <div class="polaroid-bottom-label">Where can I find work?</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         4. "A SAFE SPOT WHILE YOU FIND YOUR WAY." SECTION
+         ======================================================== -->
+    <section class="safe-spot-section" id="safe-spot" aria-label="UniCube Safe Spot Base">
+      <!-- Torn paper transition edge at top -->
+      <div class="torn-paper-edge" aria-hidden="true"></div>
+
+      <div class="section-container safe-spot-container">
+        <!-- Left: Text & CTA -->
+        <div class="safe-spot-text-col">
+          <span class="handwritten-tag peach-tag">THAT'S WHERE WE COME IN.</span>
+          <h2 class="section-title safe-spot-title">
+            A safe spot<br>
+            <span class="title-orange">while you find your way.</span>
+          </h2>
+          <p class="section-body">
+            From storage and moving to guides, support and opportunities — UniCube is here to make the journey easier.
+          </p>
+          <div class="safe-spot-btn-row">
+            <button class="btn btn-primary" onclick="openModal('booking-modal')">
+              <span>Explore how we help</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Center: Cozy Student Room Base Image with handwritten note -->
+        <div class="safe-spot-image-col">
+          <div class="cozy-room-card">
+            <img src="assets/images/cozy_room.jpg" alt="Warm cozy student room base with plants, boxes and wooden bed" class="cozy-room-img">
+            <div class="handwritten-overlay-text room-script">
+              <span>Your<br>UniCube<br>base.</span>
+              <svg class="room-script-arrow" width="36" height="30" viewBox="0 0 40 30" fill="none">
+                <path d="M5 15 C 18 5, 30 8, 35 22 M 35 22 L 28 17 M 35 22 L 34 14" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Vertical Service Navigation Menu Cards -->
+        <div class="safe-spot-services-col">
+          <div class="service-menu-stack">
+            <!-- 1. Storage -->
+            <a href="#storage" class="service-stack-card active" data-service="storage">
+              <div class="stack-card-icon icon-storage">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FE4203" stroke-width="2">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <path d="m3.3 7 8.7 5 8.7-5M12 22V12"/>
+                </svg>
+              </div>
+              <div class="stack-card-text">
+                <h4 class="stack-title">Storage</h4>
+                <p class="stack-desc">Keep what you don't need</p>
+              </div>
+            </a>
+
+            <!-- 2. Moving -->
+            <a href="#moving" class="service-stack-card" data-service="moving">
+              <div class="stack-card-icon icon-moving">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FE4203" stroke-width="2">
+                  <rect x="1" y="3" width="15" height="13"/>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              </div>
+              <div class="stack-card-text">
+                <h4 class="stack-title">Moving</h4>
+                <p class="stack-desc">Get between places</p>
+              </div>
+            </a>
+
+            <!-- 3. AI Helper -->
+            <a href="#ai-helper" class="service-stack-card" data-service="ai">
+              <div class="stack-card-icon icon-ai">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  <circle cx="9" cy="10" r="1" fill="#6366F1"/>
+                  <circle cx="15" cy="10" r="1" fill="#6366F1"/>
+                </svg>
+              </div>
+              <div class="stack-card-text">
+                <h4 class="stack-title">AI Helper</h4>
+                <p class="stack-desc">Ask anything</p>
+              </div>
+            </a>
+
+            <!-- 4. Guides -->
+            <a href="#guides" class="service-stack-card" data-service="guides">
+              <div class="stack-card-icon icon-guides">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FE4203" stroke-width="2">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </div>
+              <div class="stack-card-text">
+                <h4 class="stack-title">Guides</h4>
+                <p class="stack-desc">Practical advice</p>
+              </div>
+            </a>
+
+            <!-- 5. Opportunities -->
+            <a href="#guides" class="service-stack-card" data-service="jobs">
+              <div class="stack-card-icon icon-opps">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FE4203" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <div class="stack-card-text">
+                <h4 class="stack-title">Opportunities</h4>
+                <p class="stack-desc">Find part-time jobs</p>
+              </div>
+            </a>
+
+            <!-- 6. Community -->
+            <a href="#community" class="service-stack-card" data-service="community">
+              <div class="stack-card-icon icon-comm">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FE4203" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="stack-card-text">
+                <h4 class="stack-title">Community</h4>
+                <p class="stack-desc">Meet people and events.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. STORAGE FOR STUDENTS SECTION
+         ======================================================== -->
+    <section class="storage-section" id="storage" aria-label="Storage for Students">
+      <div class="section-container storage-container">
+        <!-- Left: Storage Info -->
+        <div class="storage-text-col">
+          <span class="sub-label-tag">STORAGE FOR STUDENTS</span>
+          <h2 class="section-title">
+            One less thing<br>
+            <span class="title-orange">to worry about.</span>
+          </h2>
+          <p class="section-body">
+            Going home? Between leases? Changing rooms?<br>
+            <strong class="highlight-orange">Keep the things you don't need</strong> with us.
+          </p>
+          <div class="storage-actions-row">
+            <button class="btn btn-primary" onclick="openModal('storage-calculator-modal')">
+              <span>Store my things</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button class="btn-text-link" onclick="openModal('how-it-works-modal')">How it works</button>
+          </div>
+        </div>
+
+        <!-- Right: 4 Step Cards -->
+        <div class="storage-steps-grid">
+          <!-- Step 1: Pack -->
+          <div class="step-card">
+            <div class="step-card-img-wrap">
+              <img src="assets/images/storage_pack.jpg" alt="Student packing boxes" class="step-card-img">
+            </div>
+            <div class="step-card-meta">
+              <h3 class="step-title">1. Pack</h3>
+              <p class="step-desc">Pack your items securely</p>
+            </div>
+          </div>
+
+          <!-- Step 2: We pick up -->
+          <div class="step-card">
+            <div class="step-card-img-wrap">
+              <img src="assets/images/storage_pickup.jpg" alt="UniCube courier picking up boxes" class="step-card-img">
+            </div>
+            <div class="step-card-meta">
+              <h3 class="step-title">2. We pick up</h3>
+              <p class="step-desc">We collect from your location</p>
+            </div>
+          </div>
+
+          <!-- Step 3: We store -->
+          <div class="step-card">
+            <div class="step-card-img-wrap">
+              <img src="assets/images/storage_warehouse.jpg" alt="Secure warehouse storage racks" class="step-card-img">
+            </div>
+            <div class="step-card-meta">
+              <h3 class="step-title">3. We store</h3>
+              <p class="step-desc">Your items stay safe with us</p>
+            </div>
+          </div>
+
+          <!-- Step 4: We return -->
+          <div class="step-card">
+            <div class="step-card-img-wrap">
+              <img src="assets/images/storage_return.jpg" alt="Student receiving stored boxes back" class="step-card-img">
+            </div>
+            <div class="step-card-meta">
+              <h3 class="step-title">4. We return</h3>
+              <p class="step-desc">We bring them back when you need them</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. MOVING SECTION ("Your life is moving. Your stuff can too.")
+         ======================================================== -->
+    <section class="moving-section" id="moving" aria-label="Moving Services">
+      <div class="section-container">
+        <div class="moving-card-banner">
+          <!-- Left: Moving Copy -->
+          <div class="moving-info-col">
+            <span class="sub-label-tag">MOVING FOR WHAT'S NEXT</span>
+            <h2 class="section-title moving-title">
+              Your life is moving.<br>
+              <span class="title-orange">Your stuff can too.</span>
+            </h2>
+            <p class="section-body moving-body">
+              Changing rooms, new leases or moving to a new place? We'll handle the heavy part so you can focus on what's next.
+            </p>
+            <div class="moving-actions-row">
+              <button class="btn btn-primary" onclick="openModal('moving-modal')">
+                <span>Plan my move</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+              <button class="btn-text-link" onclick="openModal('quote-modal')">Get a quote</button>
+            </div>
+          </div>
+
+          <!-- Right: Moving Photo with Van & Students -->
+          <div class="moving-image-col">
+            <div class="moving-photo-frame">
+              <img src="assets/images/moving_van.jpg" alt="Students moving with boxes next to UniCube van" class="moving-banner-img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         7. GUIDES SECTION ("Figuring things out, together.")
+         ======================================================== -->
+    <section class="guides-section" id="guides" aria-label="Student Guides and Advice">
+      <div class="section-container guides-container">
+        <!-- Far Left: Study Night Image -->
+        <div class="guides-hero-photo-wrap">
+          <img src="assets/images/student_study_night.jpg" alt="Student studying late night at desk with lamp" class="guides-study-img">
+        </div>
+
+        <!-- Center: Guides Intro -->
+        <div class="guides-center-col">
+          <span class="sub-label-tag guide-tag">GUIDES</span>
+          <h2 class="section-title guides-title">
+            Figuring things<br>
+            out, together.
+          </h2>
+          <p class="section-body guides-desc">
+            Use our guides to learn about Brisbane, accommodation, budgeting, part-time work, travel and more.
+          </p>
+          <div class="guides-btn-wrap">
+            <button class="btn btn-primary" onclick="openGuideArticle('all')">
+              <span>See more guides</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: 4 Guide Cards Grid -->
+        <div class="guides-cards-grid">
+          <!-- Guide 1: Moving to accommodation -->
+          <div class="guide-card" onclick="openGuideArticle('accom')">
+            <div class="guide-card-thumb">
+              <img src="assets/images/guide_accom.jpg" alt="Students in accommodation" class="guide-thumb-img">
+            </div>
+            <div class="guide-card-meta">
+              <h4 class="guide-card-title">Moving to accommodation</h4>
+            </div>
+          </div>
+
+          <!-- Guide 2: Part-time jobs -->
+          <div class="guide-card" onclick="openGuideArticle('jobs')">
+            <div class="guide-card-thumb">
+              <img src="assets/images/guide_jobs.jpg" alt="Student working part-time job" class="guide-thumb-img">
+            </div>
+            <div class="guide-card-meta">
+              <h4 class="guide-card-title">Part-time jobs</h4>
+            </div>
+          </div>
+
+          <!-- Guide 3: Going home for holidays -->
+          <div class="guide-card" onclick="openGuideArticle('travel')">
+            <div class="guide-card-thumb">
+              <img src="assets/images/guide_travel.jpg" alt="Airplane flying over sunset clouds" class="guide-thumb-img">
+            </div>
+            <div class="guide-card-meta">
+              <h4 class="guide-card-title">Going home for holidays</h4>
+            </div>
+          </div>
+
+          <!-- Guide 4: Exploring Brisbane -->
+          <div class="guide-card" onclick="openGuideArticle('brisbane')">
+            <div class="guide-card-thumb">
+              <img src="assets/images/guide_brisbane.jpg" alt="Brisbane skyline and river twilight" class="guide-thumb-img">
+            </div>
+            <div class="guide-card-meta">
+              <h4 class="guide-card-title">Exploring Brisbane</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. AI HELPER SECTION (Dark Navy Card + Chatbot UI)
+         ======================================================== -->
+    <section class="ai-helper-section" id="ai-helper" aria-label="UniCube AI Helper">
+      <div class="section-container">
+        <div class="ai-helper-dark-card">
+          <!-- Left: AI Assistant Chat Interface -->
+          <div class="ai-helper-content">
+            <div class="ai-badge-row">
+              <span class="ai-tag">
+                <span class="ai-tag-dot"></span>
+                AI HELPER
+              </span>
+            </div>
+
+            <h2 class="ai-title">
+              Not sure what to do next?<br>
+              <span class="title-orange">Ask UniCube.</span>
+            </h2>
+
+            <p class="ai-desc">
+              Get personalised answers, practical advice and real support — built for student life.
+            </p>
+
+            <!-- Quick Suggestion Prompt Chips -->
+            <div class="ai-chips-row" role="group" aria-label="Suggested Questions">
+              <button class="ai-chip" onclick="handleAiChipClick('Where can I store my things?')">
+                Where can I store my things?
+              </button>
+              <button class="ai-chip" onclick="handleAiChipClick('How do I find a part-time job?')">
+                How do I find a part-time job?
+              </button>
+              <button class="ai-chip" onclick="handleAiChipClick('What should I do before going home?')">
+                What should I do before going home?
+              </button>
+            </div>
+
+            <!-- Dynamic Chat Conversation Stream -->
+            <div class="ai-chat-conversation" id="ai-chat-conversation">
+              <!-- Default welcome or live messages appear here -->
+            </div>
+
+            <!-- Interactive AI Chat Input -->
+            <form class="ai-input-form" id="ai-chat-form" onsubmit="handleAiChatSubmit(event)">
+              <div class="ai-input-container">
+                <input 
+                  type="text" 
+                  id="ai-chat-input" 
+                  class="ai-chat-input" 
+                  placeholder="Ask anything... e.g. 'Where can I store my stuff?'"
+                  aria-label="Ask UniCube AI Assistant"
+                  autocomplete="off"
+                >
+                <button type="submit" class="ai-submit-btn" id="ai-submit-btn" aria-label="Send query">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right: Friendly 3D Robot Assistant Visual -->
+          <div class="ai-helper-visual">
+            <div class="robot-speech-annotation">
+              <span>Here to<br>help!</span>
+              <svg class="robot-arrow" width="34" height="28" viewBox="0 0 35 30" fill="none">
+                <path d="M5 5 C 15 15, 20 22, 28 20 M 28 20 L 20 18 M 28 20 L 25 26" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="robot-avatar-frame">
+              <img src="assets/images/ai_robot.jpg" alt="UniCube Friendly 3D AI Robot Helper" class="robot-img">
+              <div class="robot-ambient-glow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         9. COMMUNITY / BUILD YOUR LIFE SECTION
+         ======================================================== -->
+    <section class="community-section" id="community" aria-label="Student Community">
+      <div class="section-container community-container">
+        <!-- Left: Community Intro -->
+        <div class="community-text-col">
+          <span class="sub-label-tag">MORE THAN LOGISTICS</span>
+          <h2 class="section-title community-title">
+            Build <span class="title-orange">your life here.</span>
+          </h2>
+          <p class="section-body community-body">
+            New city. New friends. New experiences.<br>
+            UniCube is here to make the practical parts easier, so you have more room for the parts that matter.
+          </p>
+          <div class="community-btn-wrap">
+            <button class="btn btn-primary" onclick="openModal('community-modal')">
+              <span>Be part of the community</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: 3 Triptych Gallery Photos + Handwritten Note -->
+        <div class="community-gallery-col">
+          <div class="triptych-grid">
+            <div class="triptych-card">
+              <img src="assets/images/community_sports.jpg" alt="Students playing outdoor sports on campus" class="triptych-img">
+            </div>
+            <div class="triptych-card">
+              <img src="assets/images/community_dinner.jpg" alt="Students having dinner together at sunset" class="triptych-img">
+            </div>
+            <div class="triptych-card">
+              <img src="assets/images/community_view.jpg" alt="Student looking at Brisbane city skyline" class="triptych-img">
+            </div>
+          </div>
+
+          <div class="handwritten-note community-note">
+            <span>Different<br>people.<br>Same safe spot.</span>
+            <svg class="community-arrow" width="40" height="35" viewBox="0 0 45 40" fill="none">
+              <path d="M35 5 C 30 25, 20 32, 8 30 M 8 30 L 18 25 M 8 30 L 15 35" stroke="#161920" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         10. FINAL CTA SECTION (Full-Width Brisbane Night Skyline)
+         ======================================================== -->
+    <section class="final-cta-section" id="about" aria-label="Final Call to Action">
+      <div class="final-cta-bg-wrap">
+        <img src="assets/images/brisbane_night_skyline.jpg" alt="Brisbane night skyline and illuminated river" class="final-cta-bg-img">
+        <div class="final-cta-dark-overlay"></div>
+      </div>
+
+      <!-- Handwritten accents in the night sky -->
+      <div class="final-cta-annotations" aria-hidden="true">
+        <div class="handwritten-note cta-note-left">
+          <span>A BRIGHTER<br>STUDENT FUTURE.</span>
+        </div>
+        <div class="handwritten-note cta-note-right">
+          <span>More life.<br>Less chaos.</span>
+          <svg class="cta-arrow-right" width="45" height="40" viewBox="0 0 50 45" fill="none">
+            <path d="M40 8 C 36 24, 25 32, 12 36 M 12 36 L 22 35 M 12 36 L 16 26" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="final-cta-content">
+        <h2 class="final-cta-headline">
+          <span class="cta-line-white">You're building a new life.</span>
+          <span class="cta-line-orange">We're here to make it easier.</span>
+        </h2>
+        <p class="final-cta-subtitle">
+          Wherever you're going next, you don't have to figure everything out alone.
+        </p>
+
+        <div class="final-cta-buttons">
+          <button class="btn btn-primary" onclick="openModal('booking-modal')">
+            <span>Explore UniCube</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+          <button class="btn btn-glass" onclick="openModal('booking-modal')">
+            <span>Get started</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo">
+            <span class="logo-icon">
+              <svg viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="8" fill="#FE4203"/>
+                <rect x="7" y="7" width="14" height="14" rx="3.5" stroke="white" stroke-width="2.2"/>
+              </svg>
+            </span>
+            <span class="logo-text">UniCube</span>
+          </a>
+          <p class="footer-tagline">Making student life in Brisbane seamless, secure, and supported.</p>
+        </div>
+
+        <div class="footer-nav-cols">
+          <div class="footer-col">
+            <h5 class="footer-col-title">Services</h5>
+            <a href="#storage">Student Storage</a>
+            <a href="#moving">Moving & Logistics</a>
+            <a href="#storage">Holiday Return</a>
+            <a href="#storage">Packing Kits</a>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col-title">Resources</h5>
+            <a href="#guides">Accommodation Guides</a>
+            <a href="#guides">Part-Time Jobs</a>
+            <a href="#guides">Brisbane Student Life</a>
+            <a href="#ai-helper">AI Assistant</a>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col-title">UniCube</h5>
+            <a href="#community">Community Events</a>
+            <a href="#about">About Our Mission</a>
+            <a href="mailto:hello@unicube.student">Contact Team</a>
+            <a href="#">Safety & Security</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 UniCube Student Services Pty Ltd. Brisbane, Australia. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Student Discount Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       INTERACTIVE MODALS
+       ======================================================== -->
+  <!-- 1. Video Story Modal -->
+  <div class="modal-backdrop" id="video-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card modal-card--video">
+      <button class="modal-close-btn" onclick="closeModal('video-modal')" aria-label="Close dialog">&times;</button>
+      <div class="modal-video-header">
+        <span class="sub-label-tag">UNICUBE STUDENT STORIES</span>
+        <h3 class="modal-title">More than storage: Finding your footing in Brisbane</h3>
+      </div>
+      <div class="video-mock-screen">
+        <div class="video-overlay-play">
+          <button class="pulse-play-button" onclick="playMockVideo(this)" aria-label="Play video">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </button>
+          <span class="video-caption">Click to play video story (2:14 min)</span>
+        </div>
+        <img src="assets/images/community_view.jpg" alt="UniCube video preview" class="modal-video-poster">
+      </div>
+      <div class="modal-footer-note">
+        <p>"Moving from Melbourne to Brisbane for UQ was overwhelming until I had a safe place for my belongings." — Sophie, 2nd Year Architecture</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Storage & Moving Booking / Quote Modal -->
+  <div class="modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card modal-card--form">
+      <button class="modal-close-btn" onclick="closeModal('booking-modal')" aria-label="Close dialog">&times;</button>
+      <div class="modal-header">
+        <span class="sub-label-tag">GET STARTED WITH UNICUBE</span>
+        <h3 class="modal-title">Let's make things simple.</h3>
+        <p class="modal-desc">Pick what you need help with and we'll calculate your student discount instantly.</p>
+      </div>
+      <form class="booking-form" onsubmit="handleBookingSubmit(event)">
+        <div class="form-group">
+          <label>What service do you need?</label>
+          <div class="service-selector-grid">
+            <label class="radio-card selected">
+              <input type="radio" name="service" value="storage" checked>
+              <span class="radio-card-title">📦 Storage</span>
+              <span class="radio-card-sub">Holiday or between leases</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="service" value="moving">
+              <span class="radio-card-title">🚚 Moving</span>
+              <span class="radio-card-sub">Room to room or new suburb</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="service" value="both">
+              <span class="radio-card-title">✨ Move & Store</span>
+              <span class="radio-card-sub">Full student bundle</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="campus-select">Your University / Campus</label>
+            <select id="campus-select" class="form-select">
+              <option value="uq">University of Queensland (UQ - St Lucia / Herston)</option>
+              <option value="qut">Queensland University of Technology (QUT Gardens Point / Kelvin Grove)</option>
+              <option value="griffith">Griffith University (South Bank / Nathan / Mt Gravatt)</option>
+              <option value="other">Other Brisbane Student Accommodation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="box-count">Estimated Boxes / Items</label>
+            <select id="box-count" class="form-select">
+              <option value="1-3">1 - 3 Boxes / Luggage ($19/mo)</option>
+              <option value="4-6">4 - 6 Boxes + Suitcases ($39/mo)</option>
+              <option value="7-12">7 - 12 Boxes + Furniture ($69/mo)</option>
+              <option value="room">Entire Studio / Bedroom Pack ($99/mo)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="student-name">Your Full Name</label>
+            <input type="text" id="student-name" class="form-input" placeholder="e.g. Maya Chen" required>
+          </div>
+          <div class="form-group">
+            <label for="student-email">Student Email (.edu.au)</label>
+            <input type="email" id="student-email" class="form-input" placeholder="e.g. maya@student.uq.edu.au" required>
+          </div>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn btn-primary btn-block">Get My Free Instant Quote &rarr;</button>
+        </div>
+        <p class="form-guarantee">🔒 No payment required today. 100% free cancellation & student ID discount applied.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Guide Detail Modal -->
+  <div class="modal-backdrop" id="guide-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card modal-card--guide">
+      <button class="modal-close-btn" onclick="closeModal('guide-modal')" aria-label="Close dialog">&times;</button>
+      <div id="guide-modal-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
